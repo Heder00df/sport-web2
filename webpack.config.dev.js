@@ -1,8 +1,9 @@
 import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import autoprefixer from 'autoprefixer';
-
+const path = require('path');
 export default {
+
   debug: true,
   devtool: 'cheap-module-eval-source-map',
   noInfo: true,
@@ -18,10 +19,14 @@ export default {
     filename: 'bundle.js'
   },
   devServer: {
+    contentBase: path.join(__dirname, "dist"),
+    compress: true,
     port: 3000,
-    open: true,
     proxy: {
-      "/api": "http://localhost:8080"
+      '/api': {
+        target: 'http://localhost:8080',
+        secure: false
+      }
     }
   },
   plugins: [

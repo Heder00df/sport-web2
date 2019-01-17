@@ -10,7 +10,6 @@ import PageBase from '../../components/PageBase';
 
 import buscarEquipes from '../../actions/equipe/buscarEquipes';
 import selecionarEquipe from '../../actions/equipe/selecionarEquipe';
-import equipes from "../../reducers/equipe/reducer-equipe";
 
 const styles = {
   floatingActionButton: {
@@ -40,33 +39,29 @@ const styles = {
 class Equipes extends React.Component{
 
   componentDidMount(){
-    this.props.buscarEquipes().then(resp => {
-      if(resp != null){
-        console.log(resp)
-      }
-    });
+    this.props.buscarEquipes();
   }
 
   exibirEquipes(){
     if (this.props.equipes.length > 0){
 
-     {this.props.equipes.map(equipe =>
-                <TableRow key={equipe.id}>
-                  <TableRowColumn style={styles.columns.id}>{equipe.id}</TableRowColumn>
-                  <TableRowColumn style={styles.columns.name}>{equipe.descricao}</TableRowColumn>
-                  <TableRowColumn style={styles.columns.edit}>
-                    <Link className="button" to="/equipe" equipe={equipe}
-                          onClick={()=>this.props.selecionarEquipe(equipe)}>
-                      <FloatingActionButton zDepth={0}
-                                            mini={true}
-                                            backgroundColor={grey200}
-                                            iconStyle={styles.editButton}>
-                        <ContentCreate  />
-                      </FloatingActionButton>
-                    </Link>
-                  </TableRowColumn>
-                </TableRow>
-              )}
+      return this.props.equipes.map(equipe =>
+        <TableRow key={equipe.id}>
+          <TableRowColumn style={styles.columns.id}>{equipe.id}</TableRowColumn>
+          <TableRowColumn style={styles.columns.name}>{equipe.descricao}</TableRowColumn>
+          <TableRowColumn style={styles.columns.edit}>
+            <Link className="button" to="/equipe" equipe={equipe}
+                  onClick={() => this.props.selecionarEquipe(equipe)}>
+              <FloatingActionButton zDepth={0}
+                                    mini={true}
+                                    backgroundColor={grey200}
+                                    iconStyle={styles.editButton}>
+                <ContentCreate/>
+              </FloatingActionButton>
+            </Link>
+          </TableRowColumn>
+        </TableRow>
+      )
      }
     return ''
 
@@ -75,7 +70,6 @@ class Equipes extends React.Component{
     return (
       <PageBase title="Lista de equipes"
                 navigation="Application / Table Page">
-
         <div>
           <Link to="/equipe" >
             <FloatingActionButton style={styles.floatingActionButton} backgroundColor={pink500}>

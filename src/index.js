@@ -14,7 +14,6 @@ import { Provider } from 'react-redux';
 import store from './store/index';
 
 injectTapEventPlugin();
-console.log(store);
 render(
   <Provider store={store}>
     <Router routes={routes} history={browserHistory} />
