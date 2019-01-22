@@ -6,7 +6,7 @@ import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentCreate from 'material-ui/svg-icons/content/create';
 import ContentAdd from 'material-ui/svg-icons/content/add';
 import {grey200, grey500, pink500} from 'material-ui/styles/colors';
-import PageBase from '../../components/PageBase';
+import PageBase from '../PageBase';
 
 import buscarEquipes from '../../actions/equipe/buscarEquipes';
 import selecionarEquipe from '../../actions/equipe/selecionarEquipe';

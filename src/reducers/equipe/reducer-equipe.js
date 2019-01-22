@@ -1,4 +1,6 @@
-import {BUSCAR_EQUIPES, SELECIONAR_EQUIPE} from "../../actions/types";
+import {BUSCAR_EQUIPES,
+  SELECIONAR_EQUIPE,
+  SALVAR_EQUIPE} from "../../actions/types";
 
 export default function  reducerEquipe ( state = [], action) {
   switch (action.type) {
@@ -8,6 +10,10 @@ export default function  reducerEquipe ( state = [], action) {
     case SELECIONAR_EQUIPE:{
       return action.payload;
     }
+    case SALVAR_EQUIPE: {
+      return action.payload.data;
+    }
+
     default:{
       return state;
     }

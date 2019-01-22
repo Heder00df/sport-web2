@@ -1,12 +1,6 @@
-import { combineReducers } from 'redux';
-import { reducer as formReducer } from 'redux-form';
+import { combineReducers } from 'redux'
+import equipes from './equipe/reducer-equipe'
 
-import equipes from './equipe/reducer-equipe';
-
-export const rootReducer = combineReducers({
-  form: formReducer,
+export default combineReducers({
   equipes
-
 });
-
-export default rootReducer;

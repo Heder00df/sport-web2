@@ -7,12 +7,16 @@ import DatePicker from 'material-ui/DatePicker';
 import {grey400} from 'material-ui/styles/colors';
 import PageBase from '../PageBase';
 
+import salvarEquipe from '../../actions/equipe/salvarEquipe'
+
 class FormPage extends React.Component {
   constructor(props){
     super(props);
     this.state ={
       descricao:'',
-      dataInclusao: null
+      codigo:null,
+      dataInclusao: null,
+      mensagem: null
     };
 
     this.handleDescricaoEquipe = this.handleDescricaoEquipe.bind(this);
@@ -20,8 +24,8 @@ class FormPage extends React.Component {
   }
 
   componentDidMount(){
-    if (this.props.equipe){
-      this.setState({descricao:this.props.equipe.descricao})
+    if (this.props.equipe.length > 0){
+      this.setState({codigo: this.props.equipe.id, descricao:this.props.equipe.descricao})
     }
   }
 
@@ -30,13 +34,24 @@ class FormPage extends React.Component {
   }
  
   salvarEquipe(event){
-    console.log(this.state.descricao)
     event.preventDefault();
+    const equipe = {
+      descricao: this.state.descricao,
+      id: this.state.codigo
+
+    }
+    this.props.salvarEquipe(equipe).then(resp=>{
+      if(resp != null && resp.payload.status === 200){
+        this.setState({mensagem: 'Equipe incluída com sucesso.'})
+      }else if(resp != null && resp.payload.status !== 200){
+        this.setState({mensagem: 'Erro ao incluir equipe.'})
+      }
+    });
+
   }
 
 
   render() {
-    console.log(this.props.equipe)
     const styles = {
       toggleDiv: {
         maxWidth: 300,
@@ -98,4 +113,4 @@ export function mapStateToProps(state) {
   }
 
 }
-export default connect(mapStateToProps,null)(FormPage);
+export default connect(mapStateToProps,{ salvarEquipe})(FormPage);
