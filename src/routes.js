@@ -7,7 +7,8 @@ import FormPage from './containers/FormPage';
 import TablePage from './containers/TablePage';
 import Dashboard from './containers/DashboardPage';
 import Equipes from './components/equipe/Equipes';
-import FormularioEquipe from './components/equipe/FormularioEquipe'
+import FormularioEquipe from './components/equipe/FormularioEquipe';
+import FormularioAtleta from './components/atleta/FormularioAtleta'
 
 export default (
   <Route>
@@ -19,6 +20,8 @@ export default (
       <Route path="equipe" component={FormularioEquipe}/>
       <Route path="equipes" components={Equipes}/>
       <Route path="table" component={TablePage}/>
+      <Route path="atleta" component={FormularioAtleta}/>
+      <Route path="atletas" component={FormularioAtleta}/>
       <Route path="*" component={NotFoundPage}/>
     </Route>
   </Route>

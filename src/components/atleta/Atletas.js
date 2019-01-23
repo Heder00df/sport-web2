@@ -24,37 +24,26 @@ const styles = {
   },
   editButton: {
     fill: grey500
-  },
-  columns: {
-    id: {
-      width: '10%'
-    },
-    name: {
-      width: '40%'
-    },
-    edit: {
-      width: '10%'
-    }
   }
 };
 
 class Equipes extends React.Component{
 
   componentDidMount(){
-    this.props.buscarEquipes();
+    this.props.buscarAtletas();
   }
   remove(equipe){
-    this.props.excluirEquipe(equipe);
+    this.props.excluirAtleta(equipe);
 
   }
 
   exibirEquipes(){
-    if (this.props.equipes.length > 0){
-      return this.props.equipes.map(equipe =>
+    if (this.props.atletas.length > 0){
+      return this.props.atletas.map(equipe =>
         <TableRow key={equipe.id}>
-          <TableRowColumn style={styles.columns.id}>{equipe.id}</TableRowColumn>
-          <TableRowColumn style={styles.columns.name}>{equipe.descricao}</TableRowColumn>
-          <TableRowColumn style={styles.columns.edit}>
+          <TableRowColumn>{equipe.id}</TableRowColumn>
+          <TableRowColumn>{equipe.descricao}</TableRowColumn>
+          <TableRowColumn>
             <Link className="button" to="/equipe" equipe={equipe}
                   onClick={() => this.props.selecionarEquipe(equipe)}>
               <FloatingActionButton zDepth={0}
@@ -94,12 +83,16 @@ class Equipes extends React.Component{
           <Table>
             <TableHeader>
               <TableRow>
-                <TableHeaderColumn style={styles.columns.id}>Cogigo</TableHeaderColumn>
-                <TableHeaderColumn style={styles.columns.name}>Nome</TableHeaderColumn>
+                <TableHeaderColumn>Cogigo</TableHeaderColumn>
+                <TableHeaderColumn>Nome</TableHeaderColumn>
+                <TableHeaderColumn>CPF</TableHeaderColumn>
+                <TableHeaderColumn>Data de Nascimento</TableHeaderColumn>
+                <TableHeaderColumn>RG</TableHeaderColumn>
+                <TableHeaderColumn>Posição</TableHeaderColumn>
               </TableRow>
             </TableHeader>
             <TableBody>
-              {this.exibirEquipes()}
+              {this.exibirAtletas()}
             </TableBody>
           </Table>
         </div>
@@ -109,8 +102,8 @@ class Equipes extends React.Component{
 }
 export function mapStateToProps(state){
   return{
-    equipeSelecionada: state.equipeSelecionada,
-    equipes: state.equipes
+    atletaSelecionado: state.atletaSelecionado,
+    atletas: state.atletas
   };
 }
 export default connect(mapStateToProps, {selecionarEquipe, buscarEquipes, excluirEquipe } )(Equipes);

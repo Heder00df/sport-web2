@@ -12,7 +12,8 @@ import futList from './images/svg/football-list.svg';
 const data = {
   menus: [
     { text: 'DashBoard', icon: <Assessment/>, link: '/dashboard' },
-    { text: 'Equipe', icon: <img src={futList} className="icones" alt="Equipes"/>, link: '/equipes'},
+    { text: 'Atletas', icon: <img src={futList} className="icones" alt="Atletas"/>, link: '/atletas'},
+    { text: 'Equipes', icon: <img src={futList} className="icones" alt="Equipes"/>, link: '/equipes'},
     { text: 'Form Page', icon: <Web/>, link: '/form' },
     { text: 'Table Page', icon: <GridOn/>, link: '/table' },
     { text: 'Login Page', icon: <PermIdentity/>, link: '/login' }

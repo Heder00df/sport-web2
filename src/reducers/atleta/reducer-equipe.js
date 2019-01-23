@@ -1,20 +1,19 @@
-import {BUSCAR_EQUIPES,
-  SELECIONAR_EQUIPE,
-  SALVAR_EQUIPE,
-  EXCLUIR_EQUIPE} from "../../actions/types";
+import {
+  EXCLUIR_EQUIPE, BUSCAR_ATLETAS, SELECIONAR_ATLETA, SALVAR_ATLETA, EXCLUIR_ATLETA
+} from "../../actions/types";
 
 export default function  reducerEquipe ( state = [], action) {
   switch (action.type) {
-    case BUSCAR_EQUIPES: {
+    case BUSCAR_ATLETAS: {
       return action.payload.data;
     }
-    case SELECIONAR_EQUIPE:{
+    case SELECIONAR_ATLETA:{
       return action.payload;
     }
-    case SALVAR_EQUIPE: {
+    case SALVAR_ATLETA: {
       return action.payload.data;
     }
-    case EXCLUIR_EQUIPE: {
+    case EXCLUIR_ATLETA: {
       return action.payload.data;
     }
 

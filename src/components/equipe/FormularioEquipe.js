@@ -3,9 +3,9 @@ import {Link} from 'react-router';
 import {connect} from 'react-redux';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
-import DatePicker from 'material-ui/DatePicker';
 import {grey400} from 'material-ui/styles/colors';
 import PageBase from '../PageBase';
+import SnackbarContent from '@material-ui/core/SnackbarContent';
 
 import salvarEquipe from '../../actions/equipe/salvarEquipe'
 
@@ -24,7 +24,7 @@ class FormPage extends React.Component {
   }
 
   componentDidMount(){
-    if (this.props.equipe.length > 0){
+    if (this.props.equipe !== null){
       this.setState({codigo: this.props.equipe.id, descricao:this.props.equipe.descricao})
     }
   }
@@ -43,6 +43,7 @@ class FormPage extends React.Component {
     this.props.salvarEquipe(equipe).then(resp=>{
       if(resp != null && resp.payload.status === 200){
         this.setState({mensagem: 'Equipe incluída com sucesso.'})
+        console.log(this.state.mensagem)
       }else if(resp != null && resp.payload.status !== 200){
         this.setState({mensagem: 'Erro ao incluir equipe.'})
       }
@@ -76,7 +77,12 @@ class FormPage extends React.Component {
         <PageBase title="Inclusão de equipes"
                   navigation="Sport / Formulário Equipe">
           <form onSubmit= {this.salvarEquipe}>
-
+            <SnackbarContent
+                message={
+                  'I love candy. I love cookies. I love cupcakes. \
+                  I love cheesecake. I love chocolate.'
+                }
+            />
             <TextField
               hintText="Nome"
               floatingLabelText="Nome da equipe"
@@ -84,11 +90,6 @@ class FormPage extends React.Component {
               value={this.state.descricao}
               fullWidth={true}
             />
-
-            <DatePicker
-              hintText="Data Expiração"
-              floatingLabelText="Expiration Date"
-              fullWidth={true}/>
 
             <div style={styles.buttons}>
               <Link to="/equipes">
