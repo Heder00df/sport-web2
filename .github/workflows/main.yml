@@ -14,10 +14,9 @@ jobs:
       - name: Build
         run: |
           echo "Directory a the source: ${{ env.AZURE_WEBAPP_NAME }}"
-          echo "::set-env name=AZURE_WEBAPP_NAME::new_value"
-          echo "Novo valor: ${{ env.AZURE_WEBAPP_NAME }}"
           cd src
-          cat tf.plan
+          echo "::set-env name=AZURE_WEBAPP_NAME::$(cat tf.plan)"
+          echo "Novo valor: ${{ env.AZURE_WEBAPP_NAME }}"         
   deploy:
     name: deploy
     runs-on: ubuntu-latest
