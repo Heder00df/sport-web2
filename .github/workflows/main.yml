@@ -7,8 +7,11 @@ jobs:
     name: build
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+          
       - name: Build
-        run: echo building
+        run: ls
   deploy:
     name: deploy
     runs-on: ubuntu-latest
@@ -17,7 +20,7 @@ jobs:
       - uses: trstringer/manual-approval@v1
         with:
           secret: ${{ github.TOKEN }}
-          approvers: Heder00df-icloud
+          approvers: Heder00df
           minimum-approvals: 1
           issue-title: "Deploying v1.3.5 to prod from staging"
           issue-body: "Please approve or deny the deployment of version v1.3.5."
