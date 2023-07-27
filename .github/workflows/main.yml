@@ -12,12 +12,8 @@ jobs:
   deploy:
     name: deploy
     runs-on: ubuntu-latest
+    environment: 'approval'
     needs: build
     steps:
-      - uses: trstringer/manual-approval@v1
-        with:
-          secret: ${{ github.TOKEN }}
-          approvers: Heder00df
-          minimum-approvals: 1
       - name: Deploy to production
         run: echo deploying
