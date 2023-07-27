@@ -17,7 +17,7 @@ jobs:
       - uses: trstringer/manual-approval@v1
         with:
           secret: ${{ github.TOKEN }}
-          approvers: Heder00df,hederms
+          approvers: Heder00df
           minimum-approvals: 1
       - name: Deploy to production
         run: echo deploying
