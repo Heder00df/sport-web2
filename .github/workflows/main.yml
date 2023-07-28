@@ -5,15 +5,6 @@ env:
   AZURE_WEBAPP_NAME: webAppAction-wes
   MY_VARIABLE: heder
 jobs:
-  my_job:
-      runs-on: ubuntu-latest
-      steps:
-        - name: My Step
-          run: |
-            # Definir o valor da variável de ambiente
-            echo "new_value" >> $GITHUB_ENV
-            # Exibir o valor da variável de ambiente
-            echo "My variable: $MY_VARIABLE"
   build:
     name: build
     runs-on: ubuntu-latest
@@ -23,6 +14,7 @@ jobs:
           
       - name: Build
         run: |
+          echo "My variable: $MY_VARIABLE"
           echo "Directory a the source: ${{ env.AZURE_WEBAPP_NAME }}"
           cd src
           echo cat tf.plan >> ${{ env.AZURE_WEBAPP_NAME }}
