@@ -22,15 +22,7 @@ jobs:
           echo "Novo valor: ${{ env.AZURE_WEBAPP_NAME }}"
         shell: bash
       - name: teste
-        run: echo ${{env.action_state}}
-
-  deploy:
-    name: deploy
-    runs-on: ubuntu-latest
-    environment: approval
-    needs: build
-    steps:
-      - uses: trstringer/manual-approval@v1
+        uses: trstringer/manual-approval@v1
         with:
           secret: ${{ github.TOKEN }}
           approvers: Heder00df
@@ -41,4 +33,4 @@ jobs:
           additional-approved-words: ''
           additional-denied-words: ''
       - name: Deploy to production
-        run: echo deploying
+        run: echo ${{env.action_state}}
