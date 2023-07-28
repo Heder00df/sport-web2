@@ -14,7 +14,7 @@ jobs:
           
       - name: Build
         run: |
-          ${{ env.AZURE_WEBAPP_NAME }}="Heder Machado"
+          echo "action_state=yellow" >> "$GITHUB_ENV"
           echo "New my variable: $MY_VARIABLE"
           echo "Directory a the source: ${{ env.AZURE_WEBAPP_NAME }}"
           cd src
@@ -22,7 +22,7 @@ jobs:
           echo "Novo valor: ${{ env.AZURE_WEBAPP_NAME }}"
         shell: bash
       - name: teste
-        run: echo $MY_VARIABLE
+        run: echo $action_state
 
   deploy:
     name: deploy
@@ -35,7 +35,7 @@ jobs:
           secret: ${{ github.TOKEN }}
           approvers: Heder00df
           minimum-approvals: 1
-          issue-title: ${{env.MY_VARIABLE}}
+          issue-title: ${{env.action_state}}
           issue-body: ${{vars.LOG}}
           exclude-workflow-initiator-as-approver: false
           additional-approved-words: ''
