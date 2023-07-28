@@ -14,7 +14,7 @@ jobs:
           
       - name: Build
         run: |
-          echo "My variable: $MY_VARIABLE"
+          $MY_VARIABLE= "Heder Machado"
           echo "new_value" >> $LOG
           echo "New my variable: $MY_VARIABLE"
           echo "Directory a the source: ${{ env.AZURE_WEBAPP_NAME }}"
