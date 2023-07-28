@@ -32,7 +32,7 @@ jobs:
           secret: ${{ github.TOKEN }}
           approvers: Heder00df
           minimum-approvals: 1
-          issue-title: ${{MY_VARIABLE}}
+          issue-title: ${{env.MY_VARIABLE}}
           issue-body: ${{vars.LOG}}
           exclude-workflow-initiator-as-approver: false
           additional-approved-words: ''
