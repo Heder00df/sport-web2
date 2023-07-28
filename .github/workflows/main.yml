@@ -3,6 +3,7 @@ on:
   workflow_dispatch:
 env:
   AZURE_WEBAPP_NAME: webAppAction-wes
+  MY_VARIABLE: heder
 jobs:
   my_job:
       runs-on: ubuntu-latest
