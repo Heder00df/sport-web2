@@ -15,7 +15,7 @@ jobs:
         run: |
           echo "Directory a the source: ${{ env.AZURE_WEBAPP_NAME }}"
           cd src
-          echo cat tf.plan >>  $AZURE_WEBAPP_NAME
+          echo cat tf.plan >> ${{ env.AZURE_WEBAPP_NAME }}
           echo "Novo valor: ${{ env.AZURE_WEBAPP_NAME }}"         
   deploy:
     name: deploy
