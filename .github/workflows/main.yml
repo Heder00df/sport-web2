@@ -24,6 +24,7 @@ jobs:
   deploy:
     name: deploy
     runs-on: ubuntu-latest
+    environment: approval
     needs: build
     steps:
       - uses: trstringer/manual-approval@v1
