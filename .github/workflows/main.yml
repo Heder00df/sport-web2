@@ -21,6 +21,8 @@ jobs:
           echo cat tf.plan >> ${{ env.AZURE_WEBAPP_NAME }}
           echo "Novo valor: ${{ env.AZURE_WEBAPP_NAME }}"
         shell: bash
+      - name: teste
+        run: echo $MY_VARIABLE
 
   deploy:
     name: deploy
