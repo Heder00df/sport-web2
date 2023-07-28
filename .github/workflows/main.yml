@@ -14,7 +14,7 @@ jobs:
           
       - name: Build
         run: |
-          echo action_state=cat tf.plan >> "$GITHUB_ENV"
+          echo "TERRAFORM_PLAN=$(cat tf.plan)" >> $GITHUB_ENV
           echo "New my variable: $MY_VARIABLE"
           echo "Directory a the source: ${{ env.AZURE_WEBAPP_NAME }}"
           cd src
@@ -33,4 +33,4 @@ jobs:
           additional-approved-words: ''
           additional-denied-words: ''
       - name: Deploy to production
-        run: echo ${{env.action_state}}
+        run: echo $TERRAFORM_PLAN
