@@ -22,7 +22,7 @@ jobs:
           echo "Novo valor: ${{ env.AZURE_WEBAPP_NAME }}"
         shell: bash
       - name: teste
-        run: echo $action_state
+        run: echo ${{env.action_state}}
 
   deploy:
     name: deploy
